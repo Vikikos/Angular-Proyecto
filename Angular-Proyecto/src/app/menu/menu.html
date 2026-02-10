@@ -1,2 +1,23 @@
 <h1>Nuestra Carta</h1>
-<menu-item></menu-item>
+<div>
+    <form action="" class="form-floating row  my-3">
+        <select class="col-4 form-select" name="category" id="category" [(ngModel)]="optionCategorySelect" (change)="filterByCategory()" aria-label="Seleccionar Categoria">
+            <option value="">Todas</option>
+            <option value="entrantes">Entrantes</option>
+            <option value="principales">Principales</option>
+            <option value="postres">Postres</option>
+            <option value="bebidas">Bebidas</option>
+        </select>
+        <label for="floatingSelect">Selecciona Categoria</label>
+    </form>
+</div>
+<div class="plates-div">
+    @if (plates$ | async; as plates){
+        @for(plate of plates; track plate.id){
+            <menu-item [plate]="plate"></menu-item>
+        }
+    } @else {
+        <div>No hay playos disponibles</div>
+    }
+</div>
+

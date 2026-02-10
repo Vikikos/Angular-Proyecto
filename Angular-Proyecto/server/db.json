@@ -22,7 +22,7 @@
             "description": "Ensalada de tomate con aceite de oliva virgen extra",
             "price": 5.50,
             "category": "entrantes",
-            "image": "https://picsum.photos/200/300",
+            "image": "https://picsum.photos/200/200",
             "enabled": true
         },
         {
@@ -31,7 +31,7 @@
             "description": "Croquetas caseras cremosas con jamón ibérico",
             "price": 8.00,
             "category": "entrantes",
-            "image": "https://picsum.photos/200/301",
+            "image": "https://picsum.photos/200/201",
             "enabled": true
         },
         {
@@ -40,7 +40,7 @@
             "description": "Corte de ternera a la brasa con guarnición de patatas",
             "price": 18.50,
             "category": "principales",
-            "image": "https://picsum.photos/200/302",
+            "image": "https://picsum.photos/200/202",
             "enabled": true
         },
         {
@@ -49,7 +49,7 @@
             "description": "Lomo de salmón fresco con verduras de temporada",
             "price": 16.00,
             "category": "principales",
-            "image": "https://picsum.photos/200/303",
+            "image": "https://picsum.photos/200/203",
             "enabled": true
         },
         {
@@ -58,7 +58,7 @@
             "description": "Tarta horneada con base de galleta y mermelada de frutos rojos",
             "price": 6.00,
             "category": "postres",
-            "image": "https://picsum.photos/200/304",
+            "image": "https://picsum.photos/200/204",
             "enabled": true
         },
         {
@@ -67,7 +67,7 @@
             "description": "Arroz cremoso con variedad de setas silvestres y parmesano",
             "price": 12.50,
             "category": "principales",
-            "image": "https://picsum.photos/200/305",
+            "image": "https://picsum.photos/200/205",
             "enabled": true
         }
     ]

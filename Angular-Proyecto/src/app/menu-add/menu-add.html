@@ -1,0 +1,17 @@
+<h1>Añadir plato al menu</h1>
+<form action="" (ngSubmit)="addPlate()">
+    <label for="name">Nombre:</label>
+    <input type="text" name="name" id="name" [(ngModel)]="newPlate.name">
+    <textarea name="description" id="description">Desc</textarea>
+    <input type="number" name="principales" id="price">
+    <select class=" form-select" name="category" id="category" aria-label="Seleccionar Categoria">
+        <option value="" selected disabled></option>
+        <option value="entrantes">Entrantes</option>
+        <option value="principales">Principales</option>
+        <option value="postres">Postres</option>
+        <option value="bebidas">Bebidas</option>
+    </select>
+    <input type="checkbox" name="enabled" id="enabled">
+    <input type="file" name="image" id="image">
+    <button type="submit" ng-submit="addPlate()" class="btn btn-primary">Añadir</button>
+</form>

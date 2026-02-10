@@ -1,7 +1,9 @@
-<div class="card" style="width: 18rem;">
-    <img src="" class="card-img-top" alt="imagen">
+<div class="card">
+    <img src="{{ plate.image }}" class="card-img-top" alt="imagen">
     <div class="card-body">
-        <h5 class="card-title">Nombre</h5>
-        <p class="card-text">desc</p>
+        <h5 class="card-title">{{ plate.name }} - {{ plate.price | currency : 'EUR' : 'symbol' }}</h5>
+        <p class="card-text">{{ plate.description}}</p>
+        <div>{{ plate.category }}</div>
     </div>
 </div>
+
