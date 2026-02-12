@@ -12,6 +12,6 @@ export class Login {
   password = '';
   
   login() {
-
+    console.log(this.username);
   }
 }
