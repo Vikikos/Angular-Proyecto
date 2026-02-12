@@ -2,16 +2,26 @@
 <form action="" (ngSubmit)="addPlate()">
     <label for="name">Nombre:</label>
     <input type="text" name="name" id="name" [(ngModel)]="newPlate.name">
-    <textarea name="description" id="description">Desc</textarea>
-    <input type="number" name="principales" id="price">
-    <select class=" form-select" name="category" id="category" aria-label="Seleccionar Categoria">
+
+    <label for="description">Descripcion:</label>
+    <textarea name="description" id="description" [(ngModel)]="newPlate.description"></textarea>
+
+    <label for="price">Precio:</label>
+    <input type="number" name="principales" id="price" [(ngModel)]="newPlate.price">
+
+    <label for="category">Categoria: </label>
+    <select class=" form-select" name="category" id="category" aria-label="Seleccionar Categoria" [(ngModel)]="newPlate.category">
         <option value="" selected disabled></option>
         <option value="entrantes">Entrantes</option>
         <option value="principales">Principales</option>
         <option value="postres">Postres</option>
         <option value="bebidas">Bebidas</option>
     </select>
-    <input type="checkbox" name="enabled" id="enabled">
-    <input type="file" name="image" id="image">
+    <input type="checkbox" name="enabled" id="enabled" [(ngModel)]="newPlate.enabled">
+    <label for="enabled">Hacer visible</label><br>
+
+    <label for="image">Foto:</label>
+    <input type="file" name="image" id="image"  #fileImage (change)="changeImage(fileImage)">
+    <img [src]="newPlate.image" alt="" class="img-thumbnail">
     <button type="submit" ng-submit="addPlate()" class="btn btn-primary">Añadir</button>
 </form>

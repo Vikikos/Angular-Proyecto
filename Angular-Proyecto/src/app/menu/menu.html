@@ -14,7 +14,10 @@
 <div class="plates-div">
     @if (plates$ | async; as plates){
         @for(plate of plates; track plate.id){
-            <menu-item [plate]="plate"></menu-item>
+            <menu-item [plate]="plate" 
+            (idDelete)="deletePlate($event)"
+            (plateElable)="changeEnable($event)"
+            ></menu-item>
         }
     } @else {
         <div>No hay playos disponibles</div>

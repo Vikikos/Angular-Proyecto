@@ -22,4 +22,23 @@ export class Menu {
   filterByCategory() {
     this.plates$ = this.plateService.getPlatesByCategory(this.optionCategorySelect);
   }
+
+  deletePlate(idPlate: string) {
+    this.plateService.deletePlate(idPlate).subscribe();
+
+    this.plates$ = this.plateService.getplates();
+  }
+
+  enabledChange = false;
+  changeEnable(plate : IPlate) {
+    if(plate.enabled){
+      //si es visible
+      this.enabledChange = false;
+    }else{
+      this.enabledChange = true;
+    }
+    this.plateService.changeEnable(plate.id!, this.enabledChange).subscribe();
+
+    this.plates$ = this.plateService.getplates();
+  }
 }

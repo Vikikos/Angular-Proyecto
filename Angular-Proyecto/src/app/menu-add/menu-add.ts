@@ -11,7 +11,6 @@ import { FormsModule } from '@angular/forms';
 })
 export class MenuAdd {
     newPlate: IPlate= {
-        id: '',
         name: '',
         description: '',
         price: 0,
@@ -23,7 +22,6 @@ export class MenuAdd {
     addPlate() {
         this.plateService.addPlate(this.newPlate).subscribe();
         this.newPlate = {
-            id: '',
             name: '',
             description: '',
             price: 0,
@@ -31,5 +29,14 @@ export class MenuAdd {
             image: '',
             enabled: true
         }
+    }
+
+    changeImage(fileInput: HTMLInputElement) {
+      if (!fileInput.files || fileInput.files.length === 0) { return; }
+      const reader: FileReader = new FileReader();
+      reader.readAsDataURL(fileInput.files[0]);
+      reader.addEventListener('loadend', e => {
+        this.newPlate.image = reader.result as string;
+      });
     }
 }

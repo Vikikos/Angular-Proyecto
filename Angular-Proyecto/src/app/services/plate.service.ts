@@ -32,8 +32,39 @@ export class PlateService {
     .post(this.platesEndpoint, newPlate)
     .pipe(
       catchError((resp: HttpErrorResponse) =>
-        throwError(() => new Error('Error al añadir el plato')),
-      ),
-    );
+        throwError(() => new Error(
+            `Error obteniendo platos. Código de servidor: ${resp.status}.
+            Mensaje: ${resp.message}`
+          ),
+        ),
+      )
+    )
+  }
+  deletePlate(id: string) {
+    return this.http
+    .delete<IPlate[]>(`${this.platesEndpoint}/${id}`)
+    .pipe(
+      catchError((resp: HttpErrorResponse) =>
+        throwError(() => new Error(
+            `Error al eliminar el plato. Código de servidor: ${resp.status}.
+            Mensaje: ${resp.message}`
+          ),
+        ),
+      )
+    )
+  }
+
+  changeEnable(id: string, enabled: boolean) {
+    return this.http
+    .patch<IPlate>(`${this.platesEndpoint}/${id}`,{enabled})
+    .pipe(
+      catchError((resp: HttpErrorResponse) =>
+        throwError(() => new Error(
+            `Error al cambiar la visibilidad del plato. Código de servidor: ${resp.status}.
+            Mensaje: ${resp.message}`
+          ),
+        ),
+      )
+    )
   }
 }

@@ -1,0 +1,28 @@
+<form action="" (ngSubmit)="changePlate()">
+    <label for="name">Nombre:</label>
+    <input type="text" name="name" id="name" >
+
+    <label for="description">Descripcion:</label>
+    <textarea name="description" id="description" [(ngModel)]="plate.description">{{plate.description}}</textarea>
+
+    <label for="price">Precio:</label>
+    <input type="number" name="principales" id="price" [(ngModel)]="plate.price" value="{{plate.price}}">
+
+    <label for="category">Categoria: </label>
+    <select class=" form-select" name="category" id="category" aria-label="Seleccionar Categoria" [(ngModel)]="plate.category">
+        <option value="" selected disabled></option>
+        <option value="entrantes">Entrantes</option>
+        <option value="principales">Principales</option>
+        <option value="postres">Postres</option>
+        <option value="bebidas">Bebidas</option>
+    </select>
+    <input type="checkbox" name="enabled" id="enabled" [(ngModel)]="plate.enabled">
+    <label for="enabled">Hacer visible</label><br>
+
+    <label for="image">Foto:</label>
+    
+    <button type="submit" ng-submit="addPlate()" class="btn btn-primary">Añadir</button>
+</form>
+
+
+
