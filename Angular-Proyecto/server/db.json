@@ -68,7 +68,7 @@
             "price": 12.50,
             "category": "principales",
             "image": "https://picsum.photos/200/205",
-            "enabled": true
+            "enabled": false
         }
     ]
 }

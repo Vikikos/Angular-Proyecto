@@ -8,5 +8,5 @@ export const routes: Routes = [
     {path: '', component: Index, title:'Inicio'},
     {path: 'carta', component: Menu , title:'Nuestra Carta'},
     {path: 'login', component: Login, title: 'LogIn / Registro'},
-    {path: 'gestion', component: Gestion, title: 'Gestion - Admin'}
+    {path: 'admin', component: Gestion, title: 'Gestion - Admin'}
 ];
