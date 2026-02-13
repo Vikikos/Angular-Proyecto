@@ -19,14 +19,16 @@
                     <a class="nav-link" routerLink="/login">Iniciar Sesion</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Cerrar Sesion</a>
+                    <button class="btn nav-link" (click)="logout()">Cerrar Session</button>
                 </li>
             </ul>
         </div>
     </div>
   </nav>
+  <div id="logout" class="row text-danger"></div>
 </header>
 <main class="container my-4">
+    <div id="logout"></div>
     <router-outlet></router-outlet>
 </main>
 <footer>

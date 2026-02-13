@@ -9,4 +9,12 @@ import { RouterLink, RouterOutlet } from '@angular/router';
 })
 export class App {
   protected readonly title = signal('Angular-Proyecto');
+
+  logout(){
+    localStorage.removeItem('userSession');
+    document.getElementById('logout')!.textContent = 'Session Cerrada , Hasta Luego';
+    setTimeout(() => {
+      document.getElementById('logout')!.textContent = '';
+    }, 5000)
+  }
 }

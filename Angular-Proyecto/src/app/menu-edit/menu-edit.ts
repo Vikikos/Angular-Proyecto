@@ -9,8 +9,8 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './menu-edit.css',
 })
 export class MenuEdit {
-  @Input() plate! : IPlate;
-      changePlate() {
+  @Input() cplate! : IPlate;
+    changePlate() {
         
     }
     changeImage(fileInput: HTMLInputElement) {
@@ -18,7 +18,7 @@ export class MenuEdit {
         const reader: FileReader = new FileReader();
         reader.readAsDataURL(fileInput.files[0]);
         reader.addEventListener('loadend', e => {
-            this.plate.image = reader.result as string;
+            this.cplate.image = reader.result as string;
         });
     }
 }
