@@ -1,23 +1,46 @@
+
 <h1>Nuestra Carta</h1>
 <div>
     <form action="" class="form-floating row  my-3">
         <select class="col-4 form-select" name="category" id="category" [(ngModel)]="optionCategorySelect" (change)="filterByCategory()" aria-label="Seleccionar Categoria">
+            <option value="" disabled>Selecciona Categoria</option>
             <option value="">Todas</option>
             <option value="entrantes">Entrantes</option>
             <option value="principales">Principales</option>
             <option value="postres">Postres</option>
             <option value="bebidas">Bebidas</option>
         </select>
-        <label for="floatingSelect">Selecciona Categoria</label>
     </form>
+    <ul class="nav nav-pills">
+        <li class="nav-item">
+            <a class="nav-link" (click)="orderPrice(1)">Precio: de menor a mayor</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" (click)="orderPrice(2)">Precio: de mayor a menor</a>
+        </li>
+    </ul>
 </div>
 <div class="plates-div">
     @if (plates$ | async; as plates){
         @for(plate of plates; track plate.id){
-            <menu-item [plate]="plate" 
-            (idDelete)="deletePlate($event)"
-            (plateElable)="changeEnable($event)"
-            ></menu-item>
+            @if(userSession && userSession.role === 'chef')
+            { 
+                <menu-item [plate]="plate" 
+                [userSession]="userSession"
+                (changedPlate)="changePlate($event)"
+                (idDelete)="deletePlate($event)"
+                (plateElable)="changeEnable($event)"
+                ></menu-item>
+            }@else{
+                @if(plate.enabled) {
+                    <menu-item [plate]="plate" 
+                    [userSession]="userSession"
+                    (changedPlate)="changePlate($event)"
+                    (idDelete)="deletePlate($event)"
+                    (plateElable)="changeEnable($event)"
+                    ></menu-item>
+                }
+            }
         }
     } @else {
         <div>No hay playos disponibles</div>

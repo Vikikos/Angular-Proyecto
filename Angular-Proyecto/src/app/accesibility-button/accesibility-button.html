@@ -1,0 +1,48 @@
+<div id="accesibilityButton">
+    <div class="dropdown">
+    <button class="btn btn-yellow dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="Boton de accesibilidad">
+        Accesibility
+    </button>
+
+    <ul class="dropdown-menu">
+      <li class="px-2">
+        <h5>Texto</h5>
+        <div class="row justify-content-evenly">
+            <button class="col-5 row btn btn-primary" id="spaceButton" (click)="changeSpaceLine()">
+                <span>Espacio Lineas</span>
+                <span class="d-flex range">
+                    @for (seg of [2,3,4]; track $index) {
+                        <span class="flex-fill segmento" 
+                        [ngClass]="{ 'segmento-fill': seg <= visualSpace}"
+                        (mouseenter)="visualSpace = seg"
+                        ></span>
+                    }
+                    <!-- <span class="flex-fill segmento"></span>
+                    <span class="flex-fill segmento"></span> -->
+                </span>
+            </button>
+            <button class="col-5 btn btn-primary" id="fontButton" (click)="changeFont()">Fuente Legible</button>
+        </div>
+        
+      </li>
+      <li><hr class="dropdown-divider"></li>
+      <li class=" px-2">
+        <h5>Visual</h5>
+        <div class="row justify-content-evenly">
+            <button class="col-5 btn btn-primary" id="greyButton" (click)="toggleGreyScale()">Escala de Grises</button>
+            <button class="col-5 btn btn-primary" id="imgButton" (click)="toggleImage()">Esconder Imagenes</button>
+        </div>
+      </li>
+      <li><hr class="dropdown-divider"></li>
+      <li class=" px-2">
+        <h5>Orientación</h5>
+        <div class="row justify-content-evenly">
+            <button class="col-5 btn btn-primary" (click)="toggleLink()" id="linkButton">Resaltar Enlaces</button>
+            <button class="col-5 btn btn-primary" id="maskButton" (click)="toggleMask()">Mascara de Lectura</button>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>
+<div id="mask" [ngStyle]="{ top: maskTop + 'px', height: maskHeight + 'px',   display: 'none' }">
+</div>

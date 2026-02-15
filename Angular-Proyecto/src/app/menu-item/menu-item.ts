@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { IPlate } from '../interfaces/i-plate';
 import { MenuEdit } from '../menu-edit/menu-edit';
+import { IUser } from '../interfaces/i-user';
 
 @Component({
     selector: 'menu-item',
@@ -11,6 +12,7 @@ import { MenuEdit } from '../menu-edit/menu-edit';
 })
 export class MenuItem {
     @Input() plate! : IPlate;
+    @Input() userSession! : IUser;
 
     @Output() idDelete = new EventEmitter<string>();
 
@@ -26,6 +28,11 @@ export class MenuItem {
 
     viewEditForm() {
         console.log('si')
-        document.getElementById('editForm')!.style.display = 'block';
+        document.getElementById('editForm'+ this.plate.id)!.style.display = 'block';
+    }
+    @Output() changedPlate = new EventEmitter<IPlate>();
+    changePlate(plate: IPlate) {
+        this.changedPlate.emit(plate);
+        document.getElementById('editForm'+ this.plate.id)!.style.display = 'none';
     }
 }

@@ -16,7 +16,7 @@ export class MenuAdd {
         price: 0,
         category: '',
         image: '',
-        enabled: true
+        enabled: false
     }
     constructor(private plateService: PlateService ) {}
     addPlate() {
@@ -27,7 +27,7 @@ export class MenuAdd {
             price: 0,
             category: '',
             image: '',
-            enabled: true
+            enabled: false
         }
     }
 
@@ -38,5 +38,22 @@ export class MenuAdd {
       reader.addEventListener('loadend', e => {
         this.newPlate.image = reader.result as string;
       });
+    }
+    maxChars(max: number, inputName: string) {
+        const divError =  document.getElementById(`error${inputName}`);
+        let text = '';
+        if(inputName == 'name'){
+            text = this.newPlate.name.length > 50? 'Maximo de caracteres alcanzado 50' : '';
+        }
+        if(inputName == 'description' ){
+            text = this.newPlate.description.length > 200? 'Maximo de caracteres alcanzado 200' : '';
+        }
+        divError!.textContent = text;
+    }
+    priceValidation(){
+        const divError =  document.getElementById('errorprice');
+        let text = '';
+        text = this.newPlate.price < 0? 'El precio debe ser un numero positivo' : '';
+        divError!.textContent = text;
     }
 }

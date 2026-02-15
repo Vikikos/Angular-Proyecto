@@ -1,27 +1,62 @@
-<h1>Añadir plato al menu</h1>
-<form action="" (ngSubmit)="addPlate()">
-    <label for="name">Nombre:</label>
-    <input type="text" name="name" id="name" [(ngModel)]="newPlate.name">
 
-    <label for="description">Descripcion:</label>
-    <textarea name="description" id="description" [(ngModel)]="newPlate.description"></textarea>
+<form class="container mt-4" (ngSubmit)="addPlate()">
+  <div class="card shadow-sm">
+    <div class="card-body">
+      <h5 class="card-title mb-4">Añadir nuevo plato</h5>
 
-    <label for="price">Precio:</label>
-    <input type="number" name="principales" id="price" [(ngModel)]="newPlate.price">
+      <div class="mb-2">
+        <label for="name" class="form-label">Nombre: </label>
+        <input type="text" class="form-control" name="name" id="name" [(ngModel)]="newPlate.name"placeholder="Ej: Pizza Margarita" (change)="maxChars(50, 'name')">
+      </div>
+      <div id="errorname" class="text-danger"></div>
 
-    <label for="category">Categoria: </label>
-    <select class=" form-select" name="category" id="category" aria-label="Seleccionar Categoria" [(ngModel)]="newPlate.category">
-        <option value="" selected disabled></option>
-        <option value="entrantes">Entrantes</option>
-        <option value="principales">Principales</option>
-        <option value="postres">Postres</option>
-        <option value="bebidas">Bebidas</option>
-    </select>
-    <input type="checkbox" name="enabled" id="enabled" [(ngModel)]="newPlate.enabled">
-    <label for="enabled">Hacer visible</label><br>
+      <div class="mb-2">
+        <label for="description" class="form-label">Descripción: </label>
+        <textarea class="form-control" name="description" id="description" rows="3" [(ngModel)]="newPlate.description" placeholder="Describe el plato..." (change)="maxChars(200, 'description')"></textarea>
+      </div>
+      <div id="errordescription" class="text-danger"></div>
 
-    <label for="image">Foto:</label>
-    <input type="file" name="image" id="image"  #fileImage (change)="changeImage(fileImage)">
-    <img [src]="newPlate.image" alt="" class="img-thumbnail">
-    <button type="submit" ng-submit="addPlate()" class="btn btn-primary">Añadir</button>
+      <div class="mb-2">
+        <label for="price" class="form-label">Precio</label>
+        <div class="input-group">
+          <span class="input-group-text">€</span>
+          <input type="number" class="form-control" name="price" id="price" [(ngModel)]="newPlate.price" (change)="priceValidation()">
+        </div>
+      </div>
+      <div id="errorprice" class="text-danger"></div>
+
+      <div class="mb-2">
+        <label for="category" class="form-label">Categoría</label>
+        <select class="form-select" name="category" id="category" [(ngModel)]="newPlate.category">
+          <option value="" selected disabled>Selecciona una categoría</option>
+          <option value="entrantes">Entrantes</option>
+          <option value="principales">Principales</option>
+          <option value="postres">Postres</option>
+          <option value="bebidas">Bebidas</option>
+        </select>
+      </div>
+
+      <div class="mb-2">
+        <label for="image" class="form-label">Foto</label>
+        <input class="form-control" type="file" name="image" id="image"  #fileImage (change)="changeImage(fileImage)">
+      </div>
+
+      <div class="mb-2 row justify-content-center">
+        <img [src]="newPlate.image" alt="Previsualización" class="img-thumbnail" style="max-width: 200px;">
+      </div>
+
+      <div class="form-check mb-2">
+        <input class="form-check-input" type="checkbox" name="enabled" id="enabled" [(ngModel)]="newPlate.enabled">
+        <label class="form-check-label" for="enabled">
+          Hacer visible
+        </label>
+      </div>
+
+      <div class="row justify-content-center">
+        <button type="submit" class="btn btn-primary col-11">
+          Añadir plato
+        </button>
+      </div>
+    </div>
+  </div>
 </form>

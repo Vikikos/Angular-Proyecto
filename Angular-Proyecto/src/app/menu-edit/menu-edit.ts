@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { IPlate } from '../interfaces/i-plate';
 import { FormsModule } from '@angular/forms';
 
@@ -10,8 +10,10 @@ import { FormsModule } from '@angular/forms';
 })
 export class MenuEdit {
   @Input() cplate! : IPlate;
+  @Output() changedPlate = new EventEmitter<IPlate>();
     changePlate() {
-        
+      //mandamos el plato ya modificado al componente gestion
+      this.changedPlate.emit(this.cplate);
     }
     changeImage(fileInput: HTMLInputElement) {
         if (!fileInput.files || fileInput.files.length === 0) { return; }

@@ -1,10 +1,10 @@
-<div class="row">
-    <div class="col-6">
-        <menu-add></menu-add>
+@if(userSession && userSession.role === 'chef'){
+    <div class="row">
+        <div>
+            <menu-add></menu-add>
+        </div>
     </div>
-    <div class="col-6">
-        
-    </div>
-    
-</div>
-<menu></menu>
+    <menu></menu>
+}@else {
+    <div>No tienes los permisos necesarios <a routerLink="/">Volver a Pagina principal</a></div>
+}

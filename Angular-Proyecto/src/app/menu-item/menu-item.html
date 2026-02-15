@@ -9,17 +9,19 @@
     
     <img src="{{ plate.image }}" class="card-img-top" alt="imagen">
     <div class="card-body">
-        <h5 class="card-title">{{ plate.name }} - {{ plate.price | currency : 'EUR' : 'symbol' }}</h5>
-        <p class="card-text">{{ plate.description}}</p>
+        <h4 class="card-title">{{ plate.name }} - {{ plate.price | currency : 'EUR' : 'symbol' }}</h4>
+        <p class="card-text" data-base-font-size="16">{{ plate.description}}</p>
         <div>{{ plate.category }}</div>
     </div>
-    <div>
-        <button class=" mx-1 btn btn-primary" (click)="viewEditForm()">Editar</button>
-        <button (click)="deletePlate()" class=" mx-1 btn btn-danger">Eliminar</button>
-        <button class=" mx-1 btn btn-warning" (click)="changeEnable()">Visible change</button>
-    </div>
-    <div id="editForm">
-        <menu-edit [cplate]="plate" ></menu-edit>
-    </div>
+    @if(userSession && userSession.role === 'chef'){
+        <div>
+            <button class=" mx-1 btn btn-primary" (click)="viewEditForm()">Editar</button>
+            <button (click)="deletePlate()" class=" mx-1 btn btn-danger">Eliminar</button>
+            <button class=" mx-1 btn btn-warning" (click)="changeEnable()">Visible change</button>
+        </div>
+        <div id="editForm{{plate.id}}" style="display: none;">
+            <menu-edit [cplate]="plate" (changedPlate)="changePlate($event)" ></menu-edit>
+        </div>
+    }
 </div>
 

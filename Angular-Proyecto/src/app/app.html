@@ -1,3 +1,4 @@
+<div id="greyScale">
 <header>
   <nav class="navbar navbar-expand-lg bg-body-tertiary">
     <div class="container-fluid">
@@ -12,15 +13,20 @@
                 <li class="nav-item">
                     <a routerLink="/carta" class="nav-link">Carta</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" routerLink="/admin">Gestion</a>
-                </li>
-                <li class="nav-item">
+                @if(userSession && userSession.role === 'chef'){
+                    <li class="nav-item">
+                        <a class="nav-link" routerLink="/admin">Gestion</a>
+                    </li>
+                }
+                @if(userSession ){
+                    <li class="nav-item">
+                        <button class="btn nav-link" (click)="logout()">Cerrar Session</button>
+                    </li>
+                } @else {
+                  <li class="nav-item">
                     <a class="nav-link" routerLink="/login">Iniciar Sesion</a>
                 </li>
-                <li class="nav-item">
-                    <button class="btn nav-link" (click)="logout()">Cerrar Session</button>
-                </li>
+                }
             </ul>
         </div>
     </div>
@@ -28,9 +34,55 @@
   <div id="logout" class="row text-danger"></div>
 </header>
 <main class="container my-4">
-    <div id="logout"></div>
     <router-outlet></router-outlet>
 </main>
-<footer>
-f
+<footer class="bg-body-tertiary pt-4 mt-5">
+  <div class="container">
+    <div class="row gy-4">
+
+      <!-- Logo + nombre -->
+      <div class="col-md-4 text-center text-md-start">
+        <img src="logo.png" alt="La Parada - Zastávka" width="120" class="mb-2">
+        <h5 class="mb-1">La Parada</h5>
+        <p class="small text-muted mb-0">Restaurante · Bar · Comida casera</p>
+      </div>
+
+      <!-- Enlaces -->
+      <div class="col-md-4 text-center">
+        <h6 class="text-uppercase mb-3">Navegación</h6>
+        <ul class="list-unstyled">
+          <li><a routerLink="/carta" class=" text-decoration-none">Carta</a></li>
+          @if(userSession && userSession.role === 'chef'){
+            <li><a class="text-decoration-none" routerLink="/admin">Gestion</a></li>
+            }
+          @if(userSession ){
+            <li>
+              <a class="text-decoration-none" (click)="logout()">Cerrar Session</a>
+            </li>
+          } @else {
+            <li>
+              <a class="text-decoration-none" routerLink="/login">Iniciar Sesion</a>
+            </li>
+          }
+        </ul>
+      </div>
+
+      <!-- Contacto -->
+      <div class="col-md-4 text-center text-md-end">
+        <h6 class="text-uppercase mb-3">Contacto</h6>
+        <p class="mb-1"> Calle Santomera, 16</p>
+        <p class="mb-1">+34 633 01 62 92</p>
+        <p class="mb-1">info@laparada.com</p>
+      </div>
+
+    </div>
+
+    <hr class="border-secondary my-4">
+
+    <div class="text-center pb-3">
+      © 2026 La Parada · Todos los derechos reservados
+    </div>
+  </div>
 </footer>
+</div>
+<accesibility-button></accesibility-button>
